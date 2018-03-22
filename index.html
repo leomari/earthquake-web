@@ -1,19 +1,76 @@
 <html>
-	<head>
-		<meta charset='utf-8' />
-		<title>SkyAlert</title>
-		<link type= "text/css" rel = "stylesheet"
-			  href = "main.css">
-		
-	</head>
-	<body>
-		<div class = "buttons">
-			<a href = "private/index.html"><button id = "private">Private</button></a>
-			<a href = "public/index.html"><button id = "public">Public</button></a>
-		
-		</div>
-	
-	</body>
+<head>
+<meta charset='utf-8' />
+  <title>SkyAlert</title>
+ <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.1/mapbox-gl.css' rel='stylesheet' />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<link type="text/css" rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+
+
+<div id='map'></div>
+    
+<script src='script.js'></script>  
+    
+
+    
+    
+<div id='console'>
+  <img src="skyalert_logo.png" alt="logo" width="130" height="70">
+  <h2> Date: <label id='date'> </label></h2>
+    
+<button class="btn-new"><i class="ion-ios-plus-outline"></i></button>
+<button class="btn-pause"><i class="ion-ios-plus-outline"></i></button>
+<button class="btn-reset"><i class="ion-ios-plus-outline"><i class="material-icons" id  ="reload" style="font-size:28px;color:#555" >rotate_left</i></i></button>
+<div class='session' id='sliderbar'>
+  <h2>Time: <label id='active-hour'>0</label></h2>
+  <input id='slider' class='row' type='range' min='0' max='700' step='1' value='0' />
+</div>
+    
+<div class='session'>
+  <h2>Intensity</h2>
+  <div class='row colors'>
+  </div>
+  <div class='row labels'>
+    <div class='label'>0</div>
+    <div class='label'>1</div>
+    <div class='label'>2</div>
+    <div class='label'>3</div>
+    <div class='label'>4</div>
+    <div class='label'>5</div>
+    <div class='label'>6</div>
+    <div class='label'>7</div>
+    <div class='label'>8</div>
+  </div>
+</div>
+    
+    
+<form method="post">
+    <select id="dropdown" name="dropdown" onchange="changeHiddenInput(this)"></select>
+    <input type="hidden" name="hiddenInput" id="hiddenInput" value="" />
+</form>
+<div id="result"> </div>    
+    
+<form method="post">
+    <select id="dropdown2" name="dropdown2" onchange="changeHiddenInput2(this)">
+    
+    </select>
+    <input type="hidden" name="hiddenInput2" id="hiddenInput2" value="" />
+</form>
+
+</div>
+<button class='new-data'><i class="ion-ios-plus-outline"></i>Load</button>    
+    
+    
+
+
+</body>
 
 </html>
