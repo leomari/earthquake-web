@@ -1,6 +1,6 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZW5kcmVocCIsImEiOiJjamRsNmlvZjYwM3RqMnhwOGRneDhhc2ZkIn0.wVZHznNCtC5_gJAnLC2EJQ';
 
-
+var f = $.getJSON('public_02-17-2018.geojson')
 var select;
 //var select2;
 window.onload = function () {
@@ -51,7 +51,9 @@ var i;
 var Time;
 var url = mode + '_' + earthquakeDate;
 var play = false;
-
+var b;
+var endTime = 700;
+var speed = 10;
 
 var map = new mapboxgl.Map({
   container: 'map', // container element id
@@ -76,6 +78,8 @@ map.on('load', function() {
     l += 1
     url = mode + '_' + earthquakeDate;
     document.getElementById('date').textContent = earthquakeDate; 
+    //setEndTime();
+    speed = document.getElementById('speed').value;
     add_data()
     
     });
@@ -104,8 +108,7 @@ document.querySelector('.btn-new').addEventListener('click', function() {
 });
 
 function add_data() {
-    
-
+//setEndTime();
  v = [];
  i = 0;
  Time = 0;
@@ -176,7 +179,7 @@ v = [];
 //document.querySelector('.btn-new').classList.remove();
     //document.querySelector('.player-1-panel').classList.remove('active');
 
-for (var j=0; j < 700; j++) {
+for (var j=0; j < endTime; j++) {
     
     v.push(setTimeout( function () {
         
@@ -184,7 +187,7 @@ for (var j=0; j < 700; j++) {
         Time = i;
         
         i++;
-        updateLayer(Time) }, j*100));
+        updateLayer(Time) }, j*1000/speed));
     }
     play = true;
 }
@@ -208,7 +211,15 @@ function pause() {
     play = false;
     };
 
-
+function setEndTime() {
+    $.getJSON(url + '.geojson', function (data) {
+        b = data.features.length;
+        endTime = data.features[b-1].properties['Time'];
+    })
+    for (var h = 0; h < 10;h++){
+        document.getElementById('slider').max = endTime;
+    };
+    }
 function private_version() {
     map.addLayer({
       id: 'act' + l,
