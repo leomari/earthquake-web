@@ -104,8 +104,13 @@ document.querySelector('.btn-reset').addEventListener('click', function() {
     reset();}});
 
 document.querySelector('.btn-new').addEventListener('click', function() {
-    if (l > 0){
-    play_b();}});
+    if (l > 0 && play == false ){
+    play_b();} else if (l>0 && play == true){
+		pause();
+		//btn.toggleClass("btn-pause");
+		//return false; 
+		
+	}});
 
 });
 
