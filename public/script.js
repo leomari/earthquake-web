@@ -48,7 +48,13 @@ map.on('load', function() {
           
         ],
         
-        'circle-opacity': 0.8
+        'circle-opacity': [
+			'interpolate', 
+			['linear'],
+			['number', ['get', 'S_Gal']],
+			0, 0.0, 
+			5, 0.8
+		]
       }
     }, 'admin-2-boundaries-dispute');
     
